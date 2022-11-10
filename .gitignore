@@ -2,7 +2,10 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+.vscode/
+dataset/
+result*/
+analysis/
 # C extensions
 *.so
 
