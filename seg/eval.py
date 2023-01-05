@@ -437,7 +437,8 @@ if __name__ == '__main__':
             if sample not in ensemble_result:
                 ensemble_result[sample] = {
                     'true':[true],
-                    'pred':[]
+                    'pred':[],
+                    'img':[img]
                 }
             ensemble_result[sample]['pred'].append(pred)
 
@@ -534,7 +535,7 @@ if __name__ == '__main__':
         print('>>>> %s in post processing'%sample)
         ensemble_pred = ensemble(np.stack(ensemble_result[sample]['pred'],axis=0),config.num_classes - 1)
         ensemble_true = ensemble_result[sample]['true'][0]
-
+        img = ensemble_result[sample]['img'][0]
         
         category_dice, avg_dice = multi_dice(ensemble_true,ensemble_pred,config.num_classes - 1)
         category_hd, avg_hd = multi_hd(ensemble_true,ensemble_pred,config.num_classes - 1)
